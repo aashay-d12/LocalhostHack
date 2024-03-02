@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% block main %}
+    <style>
+        /* Custom CSS for input boxes */
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.5); /* translucent white */
+            color: #fff; /* text color */
+        }
+        ::placeholder {
+            color: #aaa; /* placeholder text color */
+        }
+        /* Custom CSS for result display */
+        #result {
+            background-color: rgba(0, 0, 0, 0.5); /* translucent black */
+            color: #fff; /* text color */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+
+    <div class="container">
+        <h1 id="measure" class="text-center">Quick Check Up</h1><br>
+        <form id="measurementForm">
+            <div class="mb-3">
+                <label for="heart" class="form-label">Heartbeat (bpm):</label>
+                <input type="number" class="form-control" id="heart" placeholder="Enter heartbeat" min="0">
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="systolicBP" class="form-label">Systolic Blood Pressure (mmHg):</label>
+                    <input type="number" class="form-control" id="systolicBP" placeholder="Enter systolic blood pressure" min="0">
+                </div>
+                <div class="col">
+                    <label for="diastolicBP" class="form-label">Diastolic Blood Pressure (mmHg):</label>
+                    <input type="number" class="form-control" id="diastolicBP" placeholder="Enter diastolic blood pressure" min="0">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="haemo" class="form-label">Haemoglobin:</label>
+                <input type="number" class="form-control" id="haemo" placeholder="Enter haemoglobin" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="weight" class="form-label">Weight (kg):</label>
+                <input type="number" class="form-control" id="weight" placeholder="Enter weight" min="0">
+            </div>
+            <div class="mb-3">
+                <label for="height" class="form-label">Height (cm):</label>
+                <input type="number" class="form-control" id="height" placeholder="Enter height" min="0">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+        <div id="result" class="mt-4"></div>
+    </div>
+
+    <script>
+        document.getElementById('measurementForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get input values
+            var heartRate = parseInt(document.getElementById('heart').value);
+            var systolicBP = parseInt(document.getElementById('systolicBP').value);
+            var diastolicBP = parseInt(document.getElementById('diastolicBP').value);
+            var haemoglobin = parseInt(document.getElementById('haemo').value);
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value);
+
+            // Validate heart rate
+            var heartRateStatus = '';
+            if (heartRate < 50) {
+                heartRateStatus = 'Low';
+            } else if (heartRate > 80) {
+                heartRateStatus = 'High';
+            } else {
+                heartRateStatus = 'Normal';
+            }
+
+            // Validate blood pressure
+            var bloodPressureStatus = '';
+            var bloodPressure = systolicBP + '/' + diastolicBP;
+            if (systolicBP <= 120 && diastolicBP <= 80) {
+                bloodPressureStatus = 'Normal';
+            } else if (systolicBP > 120 && systolicBP <= 129 && diastolicBP < 80) {
+                bloodPressureStatus = 'Elevated';
+            } else if ((systolicBP >= 130 && systolicBP <= 139) || (diastolicBP >= 80 && diastolicBP <= 89)) {
+                bloodPressureStatus = 'High Blood Pressure';
+            } else if (systolicBP >= 140 || diastolicBP >= 90) {
+                bloodPressureStatus = 'High Blood Pressure Stage 2';
+            } else if (systolicBP > 180 || diastolicBP > 120) {
+                bloodPressureStatus = 'Hypertensive Crisis';
+            }
+
+            // Validate haemoglobin
+            var haemoglobinStatus = '';
+            if (haemoglobin < 13.5) {
+                haemoglobinStatus = 'Low';
+            } else if (haemoglobin >= 13.5 && haemoglobin <= 17.5) {
+                haemoglobinStatus = 'Normal';
+            } else if (haemoglobin > 17.5) {
+                haemoglobinStatus = 'High';
+            }
+
+            // Calculate BMI
+            var bmi = weight / ((height / 100) * (height / 100));
+
+            // Validate BMI
+            var bmiStatus = '';
+            if (bmi < 18.5) {
+                bmiStatus = 'Underweight';
+            } else if (bmi >= 18.5 && bmi < 25) {
+                bmiStatus = 'Normal';
+            } else if (bmi >= 25 && bmi < 30) {
+                bmiStatus = 'Overweight';
+            } else if (bmi >= 30) {
+                bmiStatus = 'Obese';
+            }
+
+            // Output the results
+            var resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div class="card bg-dark"><div class="card-body">Heart Rate Status: ' + heartRateStatus + '<br>Blood Pressure: ' + bloodPressure + ' (' + bloodPressureStatus + ')<br>Haemoglobin Status: ' + haemoglobinStatus + '<br>BMI Status: ' + bmiStatus + '</div></div>';
+
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+{% endblock %}

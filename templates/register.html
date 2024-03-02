@@ -5,9 +5,9 @@
             <div class="col-md-6">
                 <div class="card" style="background-color: rgba(0, 0, 0, 0.3); padding: 20px;">
                     <div class="card-body text-light">
-                        <h1 class="card-title" style="color: #fff;">Login</h1>
+                        <h1 class="card-title" style="color: #fff;">Create Account</h1>
                         <p style="color: turquoise;">{{ info }}</p>
-                        <form action="/login" method="post">
+                        <form action="/register" method="post">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
@@ -16,9 +16,13 @@
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
                             </div>
+                            <div class="mb-3">
+                                <label for="rpassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="rpassword" placeholder="Confirm password" name="rpassword">
+                            </div>
                             <button type="submit" class="btn btn-primary">Continue</button>
                         </form>
-                        <p class="mt-3">Haven't registered yet? <a href="/register">Register here</a>.</p> <!-- Added register link -->
+                        <p class="mt-3">By continuing, you agree to HealthQuest's Conditions of Use and Privacy Notice.</p>
                     </div>
                 </div>
             </div>
