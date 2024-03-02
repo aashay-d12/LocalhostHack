@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 {% block main %}
     <style>
-        /* Custom CSS for input boxes */
+       
         .form-control {
-            background-color: rgba(255, 255, 255, 0.5); /* translucent white */
-            color: #fff; /* text color */
+            background-color: rgba(255, 255, 255, 0.5); 
+            color: #fff; 
         }
         ::placeholder {
-            color: #aaa; /* placeholder text color */
+            color: #aaa; 
         }
-        /* Custom CSS for result display */
+        
         #result {
-            background-color: rgba(0, 0, 0, 0.5); /* translucent black */
-            color: #fff; /* text color */
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: #fff; 
             padding: 10px;
             border-radius: 5px;
             margin-top: 20px;
@@ -60,7 +60,7 @@
         document.getElementById('measurementForm').addEventListener('submit', function(event) {
             event.preventDefault();
             
-            // Get input values
+            
             var heartRate = parseInt(document.getElementById('heart').value);
             var systolicBP = parseInt(document.getElementById('systolicBP').value);
             var diastolicBP = parseInt(document.getElementById('diastolicBP').value);
@@ -68,7 +68,7 @@
             var weight = parseFloat(document.getElementById('weight').value);
             var height = parseFloat(document.getElementById('height').value);
 
-            // Validate heart rate
+            
             var heartRateStatus = '';
             if (heartRate < 50) {
                 heartRateStatus = 'Low';
@@ -78,7 +78,7 @@
                 heartRateStatus = 'Normal';
             }
 
-            // Validate blood pressure
+            
             var bloodPressureStatus = '';
             var bloodPressure = systolicBP + '/' + diastolicBP;
             if (systolicBP <= 120 && diastolicBP <= 80) {
@@ -93,7 +93,7 @@
                 bloodPressureStatus = 'Hypertensive Crisis';
             }
 
-            // Validate haemoglobin
+            
             var haemoglobinStatus = '';
             if (haemoglobin < 13.5) {
                 haemoglobinStatus = 'Low';
@@ -103,10 +103,10 @@
                 haemoglobinStatus = 'High';
             }
 
-            // Calculate BMI
+            
             var bmi = weight / ((height / 100) * (height / 100));
 
-            // Validate BMI
+            
             var bmiStatus = '';
             if (bmi < 18.5) {
                 bmiStatus = 'Underweight';
@@ -118,11 +118,10 @@
                 bmiStatus = 'Obese';
             }
 
-            // Output the results
             var resultDiv = document.getElementById('result');
             resultDiv.innerHTML = '<div class="card bg-dark"><div class="card-body">Heart Rate Status: ' + heartRateStatus + '<br>Blood Pressure: ' + bloodPressure + ' (' + bloodPressureStatus + ')<br>Haemoglobin Status: ' + haemoglobinStatus + '<br>BMI Status: ' + bmiStatus + '</div></div>';
 
-            // Scroll to result
+            
             resultDiv.scrollIntoView({ behavior: 'smooth' });
         });
     </script>
