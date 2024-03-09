@@ -33,6 +33,5 @@ This project aims to address various aspects of healthcare, related challenges, 
 
 
 ## Team members
-@aashay-d12
 
 
