@@ -32,3 +32,7 @@ This project aims to address various aspects of healthcare, related challenges, 
 - **Database:** SQLite
 
 
+## Team members
+@aashay-d12
+
+
