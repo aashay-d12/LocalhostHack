@@ -33,7 +33,7 @@ This project aims to address various aspects of healthcare, related challenges, 
 
 
 ## Team members
-[Aashay] https://github.com/aashay-d12
+[Aashay](https://github.com/aashay-d12)
 
 
 
