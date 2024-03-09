@@ -33,11 +33,11 @@ This project aims to address various aspects of healthcare, related challenges, 
 
 
 ## Team members
-[@Aashay](https://github.com/aashay-d12)
-[@Mangalam](https://github.com/kumarmanglammishra2027)
-[@Aashutosh](https://github.com/ashh106)
-[@Aparajith](https://github.com/zwwix)
-[@Jayesh](https://github.com/Jayeshk25)
+- [@Aashay](https://github.com/aashay-d12)
+- [@Mangalam](https://github.com/kumarmanglammishra2027) 
+- [@Aashutosh](https://github.com/ashh106)
+- [@Aparajith](https://github.com/zwwix)
+- [@Jayesh](https://github.com/Jayeshk25)
 
 
 
